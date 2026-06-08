@@ -11,10 +11,18 @@ const camera = new THREE.PerspectiveCamera(
 
 const renderizador = new THREE.WebGLRenderer();
 
-renderizador.setSize(window.innerWidth, window.innerHeight);
+const viewport = document.getElementById("viewport");
 
+renderizador.setSize(
+    viewport.clientWidth,
+    viewport.clientHeight
+);
 document.getElementById("viewport")
-    .appendChild(renderer.domElement);  
+    .appendChild(renderizador.domElement);
+
+renderizador.domElement.style.width = "100%";
+renderizador.domElement.style.height = "100%";
+
 const geometria = new THREE.BoxGeometry();
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 
