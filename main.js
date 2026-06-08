@@ -13,8 +13,8 @@ const renderizador = new THREE.WebGLRenderer();
 
 renderizador.setSize(window.innerWidth, window.innerHeight);
 
-document.body.appendChild(renderizador.domElement);
-
+document.getElementById("viewport")
+    .appendChild(renderer.domElement);  
 const geometria = new THREE.BoxGeometry();
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 

@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor de Cena</title>
+    <title>Editor de Cena 3D</title>
 
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <h1>Editor de Cena 3D</h1>
 
     <script type="importmap">
     {
@@ -18,6 +14,43 @@
         }
     }
     </script>
+</head>
+<body>
+
+    <div id="container">
+
+        <aside id="painel">
+
+            <h2>Modelos</h2>
+
+            <button id="btnCubo">Adicionar Cubo</button>
+
+            <hr>
+
+            <h2>Objetos da Cena</h2>
+
+            <select id="listaObjetos" size="10">
+            </select>
+
+            <hr>
+
+            <h2>Transformações</h2>
+
+            <label>X</label>
+            <input type="number" id="posX" step="0.1">
+
+            <label>Y</label>
+            <input type="number" id="posY" step="0.1">
+
+            <label>Z</label>
+            <input type="number" id="posZ" step="0.1">
+
+        </aside>
+
+        <main id="viewport">
+        </main>
+
+    </div>
 
     <script type="module" src="main.js"></script>
 
