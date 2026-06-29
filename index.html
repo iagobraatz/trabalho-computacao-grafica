@@ -1,58 +1,312 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor de Cena 3D</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://unpkg.com/three@0.179.1/build/three.module.js"
-        }
-    }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor de Cena 3D — CityBits</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <div id="container">
-
-        <aside id="painel">
-
-            <h2>Modelos</h2>
-
-            <button id="btnCubo">Adicionar Cubo</button>
-
-            <hr>
-
-            <h2>Objetos da Cena</h2>
-
-            <select id="listaObjetos" size="10">
-            </select>
-
-            <hr>
-
-            <h2>Transformações</h2>
-
-            <label>X</label>
-            <input type="number" id="posX" step="0.1">
-
-            <label>Y</label>
-            <input type="number" id="posY" step="0.1">
-
-            <label>Z</label>
-            <input type="number" id="posZ" step="0.1">
-
-        </aside>
-
-        <main id="viewport">
-        </main>
-
+  <!-- ═══════════════════════════════════════════════════════════════
+       OVERLAY DE CARREGAMENTO
+       Cobre a tela inteira durante o carregamento dos modelos OBJ.
+       Removido por editor.js via setLoadingProgress() quando termina.
+  ════════════════════════════════════════════════════════════════ -->
+  <div id="loading-overlay">
+    <div id="loading-content">
+      <h2>Editor de Cena 3D</h2>
+      <p id="loading-text">Carregando modelos…</p>
+      <div id="loading-bar-bg">
+        <div id="loading-bar"></div>
+      </div>
     </div>
+  </div>
 
-    <script type="module" src="main.js"></script>
+  <!-- ═══════════════════════════════════════════════════════════════
+       LAYOUT PRINCIPAL — três colunas
+       Coluna esquerda  : painel de controle e edição
+       Coluna central   : canvas WebGL
+       Coluna direita   : seleção de modelos
+  ════════════════════════════════════════════════════════════════ -->
+  <div id="app">
+
+    <!-- ─────────────────────────────────────────────────────────────
+         PAINEL ESQUERDO — Objetos na cena e editor de propriedades
+    ──────────────────────────────────────────────────────────────── -->
+    <aside id="panel-left">
+
+      <!-- Cabeçalho do painel -->
+      <div class="panel-header">
+        <h3>Cena</h3>
+        <!-- Botões de Save/Load ficam no topo para acesso rápido -->
+        <div class="header-buttons">
+          <button id="btn-save"      title="Salvar cena como JSON">💾 Salvar</button>
+          <button id="btn-load-json" title="Carregar cena de um JSON">📂 Carregar</button>
+        </div>
+      </div>
+
+      <!-- Input de arquivo oculto — acionado por btn-load-json -->
+      <!-- accept=".json" filtra o seletor de arquivo do browser -->
+      <input
+        type="file"
+        id="file-input"
+        accept=".json"
+        style="display: none;"
+      />
+
+      <!-- ── Lista de objetos na cena ───────────────────────────── -->
+      <div class="section-label">Objetos na cena</div>
+
+      <!-- Preenchido dinamicamente por editor.refreshSceneList() -->
+      <!-- Suporta hierarquia: filhos são indentados via DFS (editor.js) -->
+      <div id="scene-list">
+        <div class="scene-empty">Cena vazia.<br/>Clique num modelo →</div>
+      </div>
+
+      <!-- Botão deletar — desabilitado quando nenhum objeto selecionado -->
+      <button
+        id="btn-delete"
+        class="btn-danger"
+        disabled
+        title="Remover objeto selecionado e seus filhos da cena"
+      >
+        🗑 Remover selecionado
+      </button>
+
+      <!-- ── Editor de propriedades ─────────────────────────────── -->
+      <!-- transform-editor é a seção que editor.js habilita/desabilita -->
+      <div id="transform-editor" class="disabled-section">
+
+        <!-- Nome do objeto selecionado -->
+        <div class="section-label">Propriedades</div>
+        <div id="selected-name" class="selected-name-display">—</div>
+
+        <!-- ── Translação ──────────────────────────────────────── -->
+        <div class="prop-group">
+          <div class="prop-group-label">Translação (X Y Z)</div>
+          <div class="input-row">
+            <label>
+              <span class="axis-x">X</span>
+              <input type="number" id="tx" step="0.1" value="0" />
+            </label>
+            <label>
+              <span class="axis-y">Y</span>
+              <input type="number" id="ty" step="0.1" value="0" />
+            </label>
+            <label>
+              <span class="axis-z">Z</span>
+              <input type="number" id="tz" step="0.1" value="0" />
+            </label>
+          </div>
+        </div>
+
+        <!-- ── Rotação ─────────────────────────────────────────── -->
+        <div class="prop-group">
+          <div class="prop-group-label">Rotação em graus (X Y Z)</div>
+          <div class="input-row">
+            <label>
+              <span class="axis-x">X</span>
+              <input type="number" id="rx" step="1" value="0" />
+            </label>
+            <label>
+              <span class="axis-y">Y</span>
+              <input type="number" id="ry" step="1" value="0" />
+            </label>
+            <label>
+              <span class="axis-z">Z</span>
+              <input type="number" id="rz" step="1" value="0" />
+            </label>
+          </div>
+        </div>
+
+        <!-- ── Escala ──────────────────────────────────────────── -->
+        <div class="prop-group">
+          <div class="prop-group-label">Escala (X Y Z)</div>
+          <div class="input-row">
+            <label>
+              <span class="axis-x">X</span>
+              <input type="number" id="sx" step="0.1" value="1" min="0.001" />
+            </label>
+            <label>
+              <span class="axis-y">Y</span>
+              <input type="number" id="sy" step="0.1" value="1" min="0.001" />
+            </label>
+            <label>
+              <span class="axis-z">Z</span>
+              <input type="number" id="sz" step="0.1" value="1" min="0.001" />
+            </label>
+          </div>
+        </div>
+
+        <!-- ── Hierarquia ──────────────────────────────────────── -->
+        <div class="prop-group">
+          <div class="prop-group-label">Pai na hierarquia</div>
+          <!--
+            Opções populadas dinamicamente por editor._refreshParentDropdown().
+            Exclui o próprio nó e seus descendentes (evita ciclos).
+          -->
+          <select id="parent-select" class="full-width-select">
+            <option value="">— Nenhum (Raiz) —</option>
+          </select>
+          <div class="hint">
+            Objetos filhos herdam a transformação do pai
+          </div>
+        </div>
+
+        <!-- ── Animação ────────────────────────────────────────── -->
+        <div class="prop-group">
+          <div class="prop-group-label">Animação</div>
+
+          <div class="anim-row">
+            <label class="anim-label">Tipo</label>
+            <!--
+              'none'      : sem animação
+              'rotate'    : rotação contínua no eixo escolhido
+              'translate' : translação pingpong no eixo escolhido
+            -->
+            <select id="anim-type" class="anim-select">
+              <option value="none">Nenhuma</option>
+              <option value="rotate">Rotação contínua</option>
+              <option value="translate">Translação pingpong</option>
+            </select>
+          </div>
+
+          <div class="anim-row">
+            <label class="anim-label">Eixo</label>
+            <select id="anim-axis" class="anim-select">
+              <option value="x">X</option>
+              <option value="y" selected>Y</option>
+              <option value="z">Z</option>
+            </select>
+          </div>
+
+          <div class="anim-row">
+            <label class="anim-label">
+              Velocidade
+              <span class="hint">(rad/s ou u/s)</span>
+            </label>
+            <input
+              type="number"
+              id="anim-speed"
+              step="0.1"
+              value="1"
+              min="0"
+              class="anim-speed-input"
+            />
+          </div>
+        </div>
+
+        <!-- ── Propriedades de textura ─────────────────────────── -->
+        <div class="prop-group">
+          <div class="prop-group-label">Textura</div>
+
+          <!-- Tint de cor: color picker nativo do browser -->
+          <div class="anim-row">
+            <label class="anim-label">Cor (tint)</label>
+            <div class="tint-row">
+              <input
+                type="color"
+                id="tex-tint"
+                value="#ffffff"
+                title="Multiplicador de cor da textura"
+              />
+              <span class="tint-reset" id="btn-tint-reset" title="Resetar cor">↺</span>
+            </div>
+          </div>
+
+          <!-- Offset UV -->
+          <div class="prop-group-label" style="margin-top: 8px;">
+            Offset UV (U / V)
+          </div>
+          <div class="input-row">
+            <label>
+              <span class="axis-x">U</span>
+              <input type="number" id="tex-offset-u" step="0.01" value="0" />
+            </label>
+            <label>
+              <span class="axis-y">V</span>
+              <input type="number" id="tex-offset-v" step="0.01" value="0" />
+            </label>
+          </div>
+
+          <!-- Escala UV -->
+          <div class="prop-group-label" style="margin-top: 8px;">
+            Escala UV (U / V)
+          </div>
+          <div class="input-row">
+            <label>
+              <span class="axis-x">U</span>
+              <input type="number" id="tex-scale-u" step="0.1" value="1" min="0.001" />
+            </label>
+            <label>
+              <span class="axis-y">V</span>
+              <input type="number" id="tex-scale-v" step="0.1" value="1" min="0.001" />
+            </label>
+          </div>
+
+          <div class="hint">Tint branco (#ffffff) = textura original</div>
+        </div>
+
+      </div>
+      <!-- fim #transform-editor -->
+
+      <!-- Dica de controles da câmera no rodapé do painel -->
+      <div id="camera-hints">
+        <div class="hint-title">Controles da câmera</div>
+        <div class="hint-line">🖱 Arrastar esquerdo → Orbitar</div>
+        <div class="hint-line">🖱 Shift + arrastar → Pan</div>
+        <div class="hint-line">🖱 Scroll → Zoom</div>
+        <div class="hint-line">🖱 Clicar objeto → Selecionar</div>
+      </div>
+
+    </aside>
+    <!-- fim #panel-left -->
+
+    <!-- ─────────────────────────────────────────────────────────────
+         ÁREA CENTRAL — Canvas WebGL
+         Ocupa todo o espaço restante entre os dois painéis.
+         O canvas é redimensionado a cada frame para corresponder
+         ao seu tamanho CSS (veja resizeCanvas em main.js).
+    ──────────────────────────────────────────────────────────────── -->
+    <main id="canvas-area">
+      <canvas id="gl-canvas">
+        Seu navegador não suporta WebGL2.
+      </canvas>
+    </main>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         PAINEL DIREITO — Seleção de modelos disponíveis
+         Preenchido por editor.buildModelPanel() após carregamento.
+         Clique num modelo → adiciona ao centro da cena.
+    ──────────────────────────────────────────────────────────────── -->
+    <aside id="panel-right">
+
+      <div class="panel-header">
+        <h3>Modelos</h3>
+      </div>
+
+      <div class="section-label">Clique para adicionar à cena</div>
+
+      <!-- Grid preenchido dinamicamente por editor.buildModelPanel() -->
+      <!-- Cada item: thumbnail 3D + label do modelo -->
+      <div id="model-grid">
+        <!-- Placeholder enquanto os modelos carregam -->
+        <div class="scene-empty">Carregando…</div>
+      </div>
+
+    </aside>
+    <!-- fim #panel-right -->
+
+  </div>
+  <!-- fim #app -->
+
+  <!--
+    Script carregado como ES Module (type="module") para que os
+    import/export dos outros arquivos funcionem corretamente.
+    defer é implícito em módulos: só executa após o HTML estar pronto.
+  -->
+  <script type="module" src="main.js"></script>
 
 </body>
 </html>

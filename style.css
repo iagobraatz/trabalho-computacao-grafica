@@ -1,48 +1,774 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ============================================================
+   style.css — Editor de Cena 3D CityBits
+   
+   Organização:
+     1.  Reset e base
+     2.  Variáveis CSS (paleta e dimensões)
+     3.  Layout principal (#app, três colunas)
+     4.  Loading overlay
+     5.  Painel esquerdo — estrutura
+     6.  Lista de objetos da cena
+     7.  Editor de propriedades (TRS, hierarquia, animação)
+     8.  Inputs e controles
+     9.  Botões
+    10.  Canvas central
+    11.  Painel direito — grid de modelos
+    12.  Badges e indicadores
+    13.  Hints da câmera
+    14.  Scrollbar customizada
+   ============================================================ */
+
+
+/* ============================================================
+   1. RESET E BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
 }
 
-body{
-    overflow:hidden;
-    font-family:Arial, sans-serif;
+html, body {
+  width:     100%;
+  height:    100%;
+  overflow:  hidden;   /* sem scroll na página — tudo scroll interno */
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size:   13px;
+  background:  var(--bg-app);
+  color:       var(--text-primary);
+  line-height: 1.4;
 }
 
-#container{
-    display:flex;
-    width:100vw;
-    height:100vh;
+/* Remove spinners dos inputs number no Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
-#painel{
-    width:300px;
-    background:#f0f0f0;
-    padding:15px;
-    overflow-y:auto;
+/* Remove spinners dos inputs number no Chrome/Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 
-#painel h2{
-    margin-bottom:10px;
+
+/* ============================================================
+   2. VARIÁVEIS CSS — paleta e dimensões
+   ============================================================ */
+
+:root {
+  /* ── Cores de fundo ──────────────────────────────────────── */
+  --bg-app:          #16181f;   /* fundo de toda a aplicação   */
+  --bg-panel:        #1e2128;   /* fundo dos painéis laterais  */
+  --bg-panel-header: #191c23;   /* cabeçalho dos painéis       */
+  --bg-input:        #13151b;   /* fundo dos inputs            */
+  --bg-hover:        #272b35;   /* hover em itens de lista     */
+  --bg-selected:     #1e3558;   /* item selecionado na lista   */
+  --bg-section:      #1a1d25;   /* fundo de seção do editor    */
+  --bg-overlay:      #0d0f14;   /* fundo do overlay de loading */
+  --bg-model-item:   #1a1d24;   /* fundo do item de modelo     */
+  --bg-model-hover:  #222638;   /* hover do item de modelo     */
+
+  /* ── Bordas ──────────────────────────────────────────────── */
+  --border:          #2d3140;
+  --border-light:    #383d4e;
+  --border-selected: #3d78d4;
+  --border-input:    #2a2f3e;
+  --border-focus:    #4a8eff;
+
+  /* ── Texto ───────────────────────────────────────────────── */
+  --text-primary:    #dde1ec;
+  --text-secondary:  #7a808f;
+  --text-muted:      #4e5468;
+  --text-label:      #a0a8bc;
+
+  /* ── Acentos ─────────────────────────────────────────────── */
+  --accent:          #4a8eff;
+  --accent-hover:    #6aa3ff;
+  --danger:          #c94040;
+  --danger-hover:    #e05050;
+  --success:         #3dba6e;
+
+  /* ── Eixos 3D (convenção universal: X=vermelho, Y=verde, Z=azul) ── */
+  --axis-x:          #e06060;
+  --axis-y:          #60c060;
+  --axis-z:          #6090e0;
+
+  /* ── Dimensões dos painéis ───────────────────────────────── */
+  --panel-left-w:    280px;
+  --panel-right-w:   220px;
+  --panel-header-h:   44px;
+
+  /* ── Thumbnails ──────────────────────────────────────────── */
+  --thumb-size:       90px;
+
+  /* ── Transições ──────────────────────────────────────────── */
+  --transition:       0.15s ease;
 }
 
-#painel button{
-    width:100%;
-    padding:10px;
-    margin-bottom:10px;
+
+/* ============================================================
+   3. LAYOUT PRINCIPAL
+   ============================================================ */
+
+#app {
+  display:               grid;
+  grid-template-columns: var(--panel-left-w) 1fr var(--panel-right-w);
+  grid-template-rows:    100dvh;
+  width:                 100%;
+  height:                100dvh;
+  overflow:              hidden;
 }
 
-#painel input{
-    width:100%;
-    margin-bottom:10px;
-    padding:5px;
+/*
+  Painéis laterais: estrutura comum.
+  overflow-y: auto  →  scroll interno quando o conteúdo ultrapassar a tela.
+  border-right/left →  separador visual com o canvas.
+*/
+aside {
+  background:   var(--bg-panel);
+  display:      flex;
+  flex-direction: column;
+  overflow:     hidden;  /* scroll controlado internamente */
+  height:       100dvh;
 }
 
-#listaObjetos{
-    width:100%;
-    height:200px;
+#panel-left {
+  border-right: 1px solid var(--border);
 }
 
-#viewport{
-    flex:1;
+#panel-right {
+  border-left: 1px solid var(--border);
+}
+
+
+/* ============================================================
+   4. LOADING OVERLAY
+   Cobre a tela inteira durante o carregamento dos modelos.
+   Fade out controlado por editor.js via opacity + pointer-events.
+   ============================================================ */
+
+#loading-overlay {
+  position:        fixed;
+  inset:           0;           /* top:0 right:0 bottom:0 left:0 */
+  background:      var(--bg-overlay);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  z-index:         9999;
+  transition:      opacity 0.4s ease;
+}
+
+#loading-content {
+  text-align: center;
+  max-width:  340px;
+  padding:    40px;
+}
+
+#loading-content h2 {
+  font-size:     22px;
+  font-weight:   600;
+  color:         var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+#loading-text {
+  color:         var(--text-secondary);
+  font-size:     13px;
+  margin-bottom: 20px;
+  min-height:    20px;
+}
+
+/* Barra de progresso — container */
+#loading-bar-bg {
+  width:         100%;
+  height:        6px;
+  background:    var(--border);
+  border-radius: 3px;
+  overflow:      hidden;
+}
+
+/* Barra de progresso — fill — largura setada por editor.js */
+#loading-bar {
+  height:           100%;
+  width:            0%;
+  background:       var(--accent);
+  border-radius:    3px;
+  transition:       width 0.25s ease;
+}
+
+
+/* ============================================================
+   5. PAINEL ESQUERDO — estrutura
+   ============================================================ */
+
+/* Cabeçalho dos painéis */
+.panel-header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         0 12px;
+  height:          var(--panel-header-h);
+  background:      var(--bg-panel-header);
+  border-bottom:   1px solid var(--border);
+  flex-shrink:     0;  /* não encolhe com o scroll */
+}
+
+.panel-header h3 {
+  font-size:   13px;
+  font-weight: 600;
+  color:       var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Botões no cabeçalho (salvar / carregar) */
+.header-buttons {
+  display: flex;
+  gap:     6px;
+}
+
+/* Rótulo de seção dentro dos painéis */
+.section-label {
+  padding:       8px 12px 4px;
+  font-size:     10px;
+  font-weight:   700;
+  color:         var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  flex-shrink:   0;
+}
+
+/* Área com scroll dentro do painel esquerdo */
+#panel-left {
+  /* Permite que o conteúdo interno role */
+  overflow-y: auto;
+}
+
+
+/* ============================================================
+   6. LISTA DE OBJETOS DA CENA
+   ============================================================ */
+
+#scene-list {
+  flex:         1 1 auto;
+  overflow-y:   auto;
+  min-height:   80px;
+  max-height:   240px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Item individual da lista */
+.scene-item {
+  display:       flex;
+  align-items:   center;
+  gap:           6px;
+  padding:       7px 8px;   /* padding-left setado dinamicamente pelo JS (indentação) */
+  cursor:        pointer;
+  border-bottom: 1px solid transparent;
+  transition:    background var(--transition), border-color var(--transition);
+  user-select:   none;
+  min-height:    32px;
+}
+
+.scene-item:hover {
+  background: var(--bg-hover);
+}
+
+.scene-item.selected {
+  background:   var(--bg-selected);
+  border-left:  3px solid var(--border-selected);
+}
+
+/* Prefixo hierárquico (└─) */
+.scene-prefix {
+  color:       var(--text-muted);
+  font-size:   11px;
+  flex-shrink: 0;
+}
+
+/* Nome do objeto */
+.scene-label {
+  flex:          1;
+  color:         var(--text-primary);
+  font-size:     12px;
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+/* Cena vazia — placeholder */
+.scene-empty {
+  padding:    24px 16px;
+  color:      var(--text-muted);
+  font-size:  12px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Botão de deletar — abaixo da lista */
+#btn-delete {
+  margin:       8px 12px;
+  flex-shrink:  0;
+}
+
+
+/* ============================================================
+   7. EDITOR DE PROPRIEDADES
+   ============================================================ */
+
+#transform-editor {
+  flex:       1 1 auto;
+  overflow-y: auto;
+  padding:    0 0 12px;
+}
+
+/* Nome do objeto selecionado */
+.selected-name-display {
+  padding:       6px 12px 10px;
+  font-size:     13px;
+  font-weight:   600;
+  color:         var(--accent);
+  border-bottom: 1px solid var(--border);
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+/* Grupo de propriedades (translação, rotação, etc.) */
+.prop-group {
+  padding:       10px 12px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Rótulo do grupo de propriedades */
+.prop-group-label {
+  font-size:     10px;
+  font-weight:   700;
+  color:         var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+/* Linha de inputs X Y Z lado a lado */
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:     6px;
+}
+
+.input-row label {
+  display:        flex;
+  flex-direction: column;
+  gap:            3px;
+}
+
+/* Rótulo do eixo (X, Y, Z) — cores por convenção 3D */
+.axis-x { color: var(--axis-x); font-size: 10px; font-weight: 700; }
+.axis-y { color: var(--axis-y); font-size: 10px; font-weight: 700; }
+.axis-z { color: var(--axis-z); font-size: 10px; font-weight: 700; }
+
+/* Select de pai em largura total */
+.full-width-select {
+  width: 100%;
+}
+
+/* Texto de dica abaixo de controles */
+.hint {
+  font-size:  10px;
+  color:      var(--text-muted);
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Seção de animação */
+.anim-row {
+  display:     flex;
+  align-items: center;
+  gap:         8px;
+  margin-bottom: 7px;
+}
+
+.anim-label {
+  font-size:   11px;
+  color:       var(--text-label);
+  width:       70px;
+  flex-shrink: 0;
+}
+
+.anim-select {
+  flex: 1;
+}
+
+.anim-speed-input {
+  flex: 1;
+}
+
+
+/* ============================================================
+   8. INPUTS E CONTROLES
+   ============================================================ */
+
+input[type="number"],
+select {
+  width:         100%;
+  background:    var(--bg-input);
+  color:         var(--text-primary);
+  border:        1px solid var(--border-input);
+  border-radius: 4px;
+  padding:       5px 7px;
+  font-size:     12px;
+  font-family:   inherit;
+  outline:       none;
+  transition:    border-color var(--transition), background var(--transition);
+}
+
+input[type="number"]:hover,
+select:hover {
+  border-color: var(--border-light);
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--border-focus);
+  background:   #161922;
+}
+
+/* Estado desabilitado — quando nenhum objeto está selecionado */
+input:disabled,
+select:disabled {
+  opacity:       0.4;
+  cursor:        not-allowed;
+  border-color:  var(--border);
+}
+
+/* Seção desabilitada como um todo */
+.disabled-section {
+  opacity:        0.4;
+  pointer-events: none;
+}
+
+/* Remove borda azul padrão do browser no select focado */
+select {
+  appearance:      none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a808f'/%3E%3C/svg%3E");
+  background-repeat:   no-repeat;
+  background-position: right 8px center;
+  padding-right:       24px;
+}
+
+
+/* ============================================================
+   9. BOTÕES
+   ============================================================ */
+
+button {
+  display:       inline-flex;
+  align-items:   center;
+  justify-content: center;
+  gap:           5px;
+  padding:       6px 12px;
+  border:        1px solid var(--border-light);
+  border-radius: 4px;
+  background:    var(--bg-hover);
+  color:         var(--text-label);
+  font-size:     12px;
+  font-family:   inherit;
+  font-weight:   500;
+  cursor:        pointer;
+  transition:    background var(--transition),
+                 border-color var(--transition),
+                 color var(--transition);
+  white-space:   nowrap;
+  user-select:   none;
+}
+
+button:hover:not(:disabled) {
+  background:   var(--bg-hover);
+  border-color: var(--border-focus);
+  color:        var(--text-primary);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity:       0.35;
+  cursor:        not-allowed;
+  border-color:  var(--border);
+}
+
+/* Botão de perigo (deletar) */
+.btn-danger {
+  width:        calc(100% - 24px);
+  background:   transparent;
+  border-color: var(--danger);
+  color:        var(--danger);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background:   var(--danger);
+  border-color: var(--danger-hover);
+  color:        #fff;
+}
+
+/* Botões do cabeçalho (salvar / carregar) */
+.header-buttons button {
+  padding:    4px 9px;
+  font-size:  11px;
+  background: transparent;
+}
+
+.header-buttons button:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+
+
+/* ============================================================
+   10. CANVAS CENTRAL
+   ============================================================ */
+
+#canvas-area {
+  position:   relative;
+  overflow:   hidden;
+  background: #13151c;  /* fallback enquanto WebGL carrega */
+}
+
+/*
+  O canvas PRECISA ser 100% × 100% da área pai.
+  Se não for, resizeCanvas() em main.js vai ler clientWidth/Height
+  incorretos e o viewport WebGL ficará com tamanho errado.
+  display: block remove o espaço inline padrão abaixo do canvas.
+*/
+#gl-canvas {
+  display: block;
+  width:   100%;
+  height:  100%;
+  cursor:  crosshair;
+}
+
+/* Cursor durante o drag */
+#gl-canvas:active {
+  cursor: grabbing;
+}
+
+
+/* ============================================================
+   11. PAINEL DIREITO — Grid de modelos
+   ============================================================ */
+
+#panel-right {
+  overflow-y: auto;
+}
+
+/*
+  Grid de thumbnails: 2 colunas que se ajustam ao painel.
+  auto-fill com minmax: preenche o painel com o máximo de colunas
+  que couberem, cada uma com no mínimo --thumb-size.
+*/
+#model-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--thumb-size), 1fr));
+  gap:                   6px;
+  padding:               8px;
+}
+
+/* Item de modelo: thumbnail + label */
+.model-item {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            5px;
+  padding:        8px 4px 6px;
+  background:     var(--bg-model-item);
+  border:         1px solid var(--border);
+  border-radius:  6px;
+  cursor:         pointer;
+  transition:     background var(--transition),
+                  border-color var(--transition),
+                  transform var(--transition);
+  user-select:    none;
+}
+
+.model-item:hover {
+  background:   var(--bg-model-hover);
+  border-color: var(--accent);
+  transform:    translateY(-1px);
+}
+
+.model-item:active {
+  transform:    translateY(0);
+}
+
+/* Thumbnail 3D renderizado por main.js */
+.model-item img {
+  width:         var(--thumb-size);
+  height:        var(--thumb-size);
+  object-fit:    contain;
+  border-radius: 3px;
+  display:       block;
+  /* Torna as bordas do canvas 2D arredondadas */
+  overflow:      hidden;
+}
+
+/* Label de texto abaixo da miniatura */
+.model-label {
+  font-size:     10px;
+  color:         var(--text-secondary);
+  text-align:    center;
+  line-height:   1.3;
+  width:         100%;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+  white-space:   nowrap;
+  padding:       0 2px;
+}
+
+.model-item:hover .model-label {
+  color: var(--text-primary);
+}
+
+
+/* ============================================================
+   12. BADGES E INDICADORES
+   ============================================================ */
+
+/* Badge genérico (⟳ animação, ▾ filhos) */
+.badge {
+  font-size:    10px;
+  flex-shrink:  0;
+  line-height:  1;
+}
+
+/* Badge de animação ativa */
+.anim-badge {
+  color:       var(--success);
+  font-size:   12px;
+  animation:   spin 2s linear infinite;
+}
+
+/* Badge de tem filhos */
+.child-badge {
+  color:     var(--accent);
+  font-size: 11px;
+}
+
+/* Animação do badge de rotação */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+
+/* ============================================================
+   13. HINTS DA CÂMERA
+   ============================================================ */
+
+#camera-hints {
+  padding:       12px;
+  border-top:    1px solid var(--border);
+  flex-shrink:   0;
+  margin-top:    auto;  /* empurra para o fundo do painel esquerdo */
+}
+
+.hint-title {
+  font-size:     10px;
+  font-weight:   700;
+  color:         var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 7px;
+}
+
+.hint-line {
+  font-size:     11px;
+  color:         var(--text-muted);
+  padding:       2px 0;
+  display:       flex;
+  align-items:   center;
+  gap:           6px;
+}
+
+
+/* ============================================================
+   14. SCROLLBAR CUSTOMIZADA
+   Funciona no Chrome/Edge/Safari (WebKit).
+   Firefox usa scrollbar-width + scrollbar-color.
+   ============================================================ */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-light) transparent;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width:  6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background:    var(--border-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ============================================================
+   15. PROPRIEDADES DE TEXTURA
+   ============================================================ */
+
+/* Linha do color picker com botão de reset */
+.tint-row {
+  display:     flex;
+  align-items: center;
+  gap:         8px;
+  flex:        1;
+}
+
+/* Color picker nativo do browser */
+input[type="color"] {
+  width:         44px;
+  height:        28px;
+  padding:       2px 3px;
+  border:        1px solid var(--border-input);
+  border-radius: 4px;
+  background:    var(--bg-input);
+  cursor:        pointer;
+  flex-shrink:   0;
+}
+
+input[type="color"]:hover {
+  border-color: var(--border-focus);
+}
+
+input[type="color"]:disabled {
+  opacity: 0.4;
+  cursor:  not-allowed;
+}
+
+/* Botão de reset do tint */
+.tint-reset {
+  color:       var(--text-muted);
+  font-size:   16px;
+  cursor:      pointer;
+  line-height: 1;
+  transition:  color var(--transition), transform var(--transition);
+  user-select: none;
+}
+
+.tint-reset:hover {
+  color:     var(--accent);
+  transform: rotate(-30deg);
 }
