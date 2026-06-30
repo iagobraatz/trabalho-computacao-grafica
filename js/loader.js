@@ -12,10 +12,6 @@
  * retornam a referência ao mesmo VAO — nunca duplica memória.
  */
 
-// ─────────────────────────────────────────────────────────────
-// LISTA DE MODELOS DISPONÍVEIS
-// ─────────────────────────────────────────────────────────────
-
 export const MODEL_LIST = [
   // Infraestrutura
   { name: 'base',                   label: 'Base Tile'         },

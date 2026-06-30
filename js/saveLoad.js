@@ -16,10 +16,7 @@
  */
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // SALVAR
-// ─────────────────────────────────────────────────────────────────────────────
-
 /**
  * Serializa a cena atual para JSON e dispara o download no browser.
  *
@@ -31,9 +28,6 @@
  *  5. Cria um <a> invisível com atributo download e simula um clique
  *  6. Libera a URL com revokeObjectURL (evita leak de memória)
  *
- * O nome do arquivo inclui um timestamp para evitar sobrescrever
- * arquivos salvos anteriormente:
- *   cena_2025-06-10_14-30-00.json
  *
  * @param {Scene} scene — instância do grafo de cena
  */
@@ -80,9 +74,6 @@ export function saveSceneToFile(scene) {
 /**
  * Gera o nome do arquivo de save com timestamp.
  * Formato: cena_YYYY-MM-DD_HH-MM-SS.json
- *
- * Exemplo: cena_2025-06-10_14-30-00.json
- *
  * @returns {string}
  */
 function _buildFilename() {
@@ -97,9 +88,7 @@ function _buildFilename() {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // CARREGAR
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Lê um arquivo JSON do disco e reconstrói a cena a partir dele.
@@ -196,9 +185,7 @@ export function loadSceneFromFile(file, scene, onComplete) {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // VALIDAÇÃO DO JSON
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Valida a estrutura básica de um objeto JSON de cena.

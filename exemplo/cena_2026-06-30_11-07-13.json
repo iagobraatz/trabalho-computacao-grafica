@@ -1,0 +1,1932 @@
+{
+  "nextId": 71,
+  "nodes": [
+    {
+      "id": 1,
+      "modelName": "base",
+      "name": "Base (0,0)",
+      "parentId": null,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 2,
+      "modelName": "base",
+      "name": "Base (0,1)",
+      "parentId": null,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 2,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 3,
+      "modelName": "base",
+      "name": "Base (0,2)",
+      "parentId": null,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 4,
+      "modelName": "base",
+      "name": "Base (1,0)",
+      "parentId": null,
+      "transform": {
+        "tx": 2,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 5,
+      "modelName": "base",
+      "name": "Base (1,1)",
+      "parentId": null,
+      "transform": {
+        "tx": 2,
+        "ty": 0,
+        "tz": 2,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 6,
+      "modelName": "base",
+      "name": "Base (1,2)",
+      "parentId": null,
+      "transform": {
+        "tx": 2,
+        "ty": 0,
+        "tz": 4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 7,
+      "modelName": "base",
+      "name": "Base (2,0)",
+      "parentId": null,
+      "transform": {
+        "tx": 4,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 8,
+      "modelName": "base",
+      "name": "Base (2,1)",
+      "parentId": null,
+      "transform": {
+        "tx": 4,
+        "ty": 0,
+        "tz": 2,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 9,
+      "modelName": "base",
+      "name": "Base (2,2)",
+      "parentId": null,
+      "transform": {
+        "tx": 4,
+        "ty": 0,
+        "tz": 4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 10,
+      "modelName": "building_A",
+      "name": "Edificio A",
+      "parentId": null,
+      "transform": {
+        "tx": 0,
+        "ty": 0.05,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 11,
+      "modelName": "building_B",
+      "name": "Edificio B",
+      "parentId": null,
+      "transform": {
+        "tx": 4,
+        "ty": 0.05,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 12,
+      "modelName": "building_C",
+      "name": "Edificio C (central)",
+      "parentId": null,
+      "transform": {
+        "tx": 2,
+        "ty": 0.05,
+        "tz": 2,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 13,
+      "modelName": "building_D",
+      "name": "Edificio D",
+      "parentId": null,
+      "transform": {
+        "tx": 0,
+        "ty": 0.05,
+        "tz": 4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 14,
+      "modelName": "building_E",
+      "name": "Edificio E",
+      "parentId": null,
+      "transform": {
+        "tx": 4,
+        "ty": 0.05,
+        "tz": 4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 15,
+      "modelName": "watertower",
+      "name": "Caixa d'agua (filha do Edificio B)",
+      "parentId": 11,
+      "transform": {
+        "tx": 0,
+        "ty": 1.6,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 0.6,
+        "sy": 0.6,
+        "sz": 0.6
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 16,
+      "modelName": "road_straight",
+      "name": "Rua Sul 0",
+      "parentId": null,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": -2,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 17,
+      "modelName": "road_straight",
+      "name": "Rua Sul 1",
+      "parentId": null,
+      "transform": {
+        "tx": 2,
+        "ty": 0,
+        "tz": -2,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 18,
+      "modelName": "road_straight",
+      "name": "Rua Sul 2",
+      "parentId": null,
+      "transform": {
+        "tx": 4,
+        "ty": 0,
+        "tz": -2,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 19,
+      "modelName": "road_straight",
+      "name": "Rua Norte 0",
+      "parentId": null,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 6,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 20,
+      "modelName": "road_straight",
+      "name": "Rua Norte 1",
+      "parentId": null,
+      "transform": {
+        "tx": 2,
+        "ty": 0,
+        "tz": 6,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 21,
+      "modelName": "road_straight",
+      "name": "Rua Norte 2",
+      "parentId": null,
+      "transform": {
+        "tx": 4,
+        "ty": 0,
+        "tz": 6,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 22,
+      "modelName": "road_straight",
+      "name": "Rua Oeste 0",
+      "parentId": null,
+      "transform": {
+        "tx": -2,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 23,
+      "modelName": "road_straight",
+      "name": "Rua Oeste 1",
+      "parentId": null,
+      "transform": {
+        "tx": -2,
+        "ty": 0,
+        "tz": 2,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 24,
+      "modelName": "road_straight",
+      "name": "Rua Oeste 2",
+      "parentId": null,
+      "transform": {
+        "tx": -2,
+        "ty": 0,
+        "tz": 4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 27,
+      "modelName": "road_straight",
+      "name": "Rua Leste 2",
+      "parentId": null,
+      "transform": {
+        "tx": 6,
+        "ty": 0,
+        "tz": 4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 28,
+      "modelName": "road_corner",
+      "name": "Esquina Sudoeste",
+      "parentId": null,
+      "transform": {
+        "tx": -2,
+        "ty": 0,
+        "tz": -2,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 29,
+      "modelName": "road_corner",
+      "name": "Esquina Sudeste",
+      "parentId": null,
+      "transform": {
+        "tx": 6,
+        "ty": 0,
+        "tz": -2,
+        "rx": 0,
+        "ry": 270,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 30,
+      "modelName": "road_corner",
+      "name": "Esquina Noroeste",
+      "parentId": null,
+      "transform": {
+        "tx": -2,
+        "ty": 0,
+        "tz": 6,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 31,
+      "modelName": "road_corner",
+      "name": "Esquina Nordeste",
+      "parentId": null,
+      "transform": {
+        "tx": 6,
+        "ty": 0,
+        "tz": 6,
+        "rx": 0,
+        "ry": 180,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 33,
+      "modelName": "streetlight",
+      "name": "Poste NO",
+      "parentId": null,
+      "transform": {
+        "tx": -0.8,
+        "ty": 0,
+        "tz": -0.8,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 34,
+      "modelName": "streetlight",
+      "name": "Poste NE",
+      "parentId": null,
+      "transform": {
+        "tx": 4.8,
+        "ty": 0,
+        "tz": -0.8,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 35,
+      "modelName": "streetlight",
+      "name": "Poste SO",
+      "parentId": null,
+      "transform": {
+        "tx": -0.8,
+        "ty": 0,
+        "tz": 4.8,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 36,
+      "modelName": "streetlight",
+      "name": "Poste SE",
+      "parentId": null,
+      "transform": {
+        "tx": 4.8,
+        "ty": 0,
+        "tz": 4.8,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 37,
+      "modelName": "trafficlight_A",
+      "name": "Semaforo (animado)",
+      "parentId": null,
+      "transform": {
+        "tx": -1.2,
+        "ty": 0,
+        "tz": -1.4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 0.4
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 38,
+      "modelName": "bench",
+      "name": "Banco da praca",
+      "parentId": null,
+      "transform": {
+        "tx": 2,
+        "ty": 0,
+        "tz": 2.8,
+        "rx": 0,
+        "ry": 180,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 39,
+      "modelName": "bush",
+      "name": "Arbusto 1",
+      "parentId": null,
+      "transform": {
+        "tx": 1.4,
+        "ty": 0,
+        "tz": 2.4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 0.8,
+        "sy": 0.8,
+        "sz": 0.8
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 40,
+      "modelName": "bush",
+      "name": "Arbusto 2",
+      "parentId": null,
+      "transform": {
+        "tx": 2.6,
+        "ty": 0,
+        "tz": 2.4,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 0.8,
+        "sy": 0.8,
+        "sz": 0.8
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 41,
+      "modelName": "trash_A",
+      "name": "Lixo A",
+      "parentId": null,
+      "transform": {
+        "tx": 4.7,
+        "ty": 0,
+        "tz": 0.3,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 42,
+      "modelName": "trash_B",
+      "name": "Lixo B",
+      "parentId": null,
+      "transform": {
+        "tx": 0.3,
+        "ty": 0,
+        "tz": 4.7,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 43,
+      "modelName": "dumpster",
+      "name": "Dumpster",
+      "parentId": null,
+      "transform": {
+        "tx": 4.5,
+        "ty": 0,
+        "tz": 4.5,
+        "rx": 0,
+        "ry": 45,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 44,
+      "modelName": "firehydrant",
+      "name": "Hidrante",
+      "parentId": null,
+      "transform": {
+        "tx": 1.3,
+        "ty": 0,
+        "tz": -0.7,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 45,
+      "modelName": "box_A",
+      "name": "Caixa A",
+      "parentId": null,
+      "transform": {
+        "tx": 0.6,
+        "ty": 0,
+        "tz": 1.4,
+        "rx": 0,
+        "ry": 20,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 46,
+      "modelName": "box_B",
+      "name": "Caixa B",
+      "parentId": null,
+      "transform": {
+        "tx": 1,
+        "ty": 0,
+        "tz": 1.7,
+        "rx": 0,
+        "ry": 0,
+        "rz": 15,
+        "sx": 1,
+        "sy": 1.4,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 47,
+      "modelName": "car_sedan",
+      "name": "Carro Sedan (raiz)",
+      "parentId": null,
+      "transform": {
+        "tx": -2,
+        "ty": 0.1,
+        "tz": -2,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 52,
+      "modelName": "car_taxi",
+      "name": "Taxi (animado)",
+      "parentId": null,
+      "transform": {
+        "tx": 2,
+        "ty": 0.1,
+        "tz": -2,
+        "rx": 0,
+        "ry": 90,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "translate",
+        "axis": "x",
+        "speed": 1.5
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 53,
+      "modelName": "car_police",
+      "name": "Carro Policia",
+      "parentId": null,
+      "transform": {
+        "tx": 6,
+        "ty": 0.1,
+        "tz": -1,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "translate",
+        "axis": "z",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 0.85,
+        "tintG": 0.9,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 55,
+      "modelName": "road_tsplit",
+      "name": "road_tsplit #55",
+      "parentId": null,
+      "transform": {
+        "tx": 6,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 56,
+      "modelName": "road_straight",
+      "name": "road_straight #56",
+      "parentId": null,
+      "transform": {
+        "tx": 6,
+        "ty": 0,
+        "tz": 2,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 57,
+      "modelName": "road_tsplit",
+      "name": "road_tsplit #57",
+      "parentId": null,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 58,
+      "modelName": "car_sedan_wheel_front_left",
+      "name": "car_sedan_wheel_front_left #58",
+      "parentId": 47,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 59,
+      "modelName": "car_sedan_wheel_front_right",
+      "name": "car_sedan_wheel_front_right #59",
+      "parentId": 47,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 60,
+      "modelName": "car_sedan_wheel_rear_left",
+      "name": "car_sedan_wheel_rear_left #60",
+      "parentId": 47,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 61,
+      "modelName": "car_sedan_wheel_rear_right",
+      "name": "car_sedan_wheel_rear_right #61",
+      "parentId": 47,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 62,
+      "modelName": "car_sedan_wheel_front_left",
+      "name": "car_sedan_wheel_front_left #62",
+      "parentId": 52,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 63,
+      "modelName": "car_sedan_wheel_front_right",
+      "name": "car_sedan_wheel_front_right #63",
+      "parentId": 53,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 64,
+      "modelName": "car_sedan_wheel_rear_left",
+      "name": "car_sedan_wheel_rear_left #64",
+      "parentId": 53,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 65,
+      "modelName": "car_sedan_wheel_front_left",
+      "name": "car_sedan_wheel_front_left #65",
+      "parentId": 53,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 66,
+      "modelName": "car_sedan_wheel_rear_right",
+      "name": "car_sedan_wheel_rear_right #66",
+      "parentId": 53,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 67,
+      "modelName": "car_sedan_wheel_front_right",
+      "name": "car_sedan_wheel_front_right #67",
+      "parentId": 52,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 68,
+      "modelName": "car_sedan_wheel_rear_left",
+      "name": "car_sedan_wheel_rear_left #68",
+      "parentId": 52,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 69,
+      "modelName": "car_sedan_wheel_rear_right",
+      "name": "car_sedan_wheel_rear_right #69",
+      "parentId": 52,
+      "transform": {
+        "tx": 0,
+        "ty": 0,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "none",
+        "axis": "y",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    },
+    {
+      "id": 70,
+      "modelName": "trash_B",
+      "name": "trash_B #70",
+      "parentId": null,
+      "transform": {
+        "tx": 7,
+        "ty": 1,
+        "tz": 0,
+        "rx": 0,
+        "ry": 0,
+        "rz": 0,
+        "sx": 1,
+        "sy": 1,
+        "sz": 1
+      },
+      "animation": {
+        "type": "rotate",
+        "axis": "x",
+        "speed": 1
+      },
+      "texture": {
+        "tintR": 0.6352941176470588,
+        "tintG": 0.10196078431372549,
+        "tintB": 0.10196078431372549,
+        "offsetU": 0,
+        "offsetV": 0,
+        "scaleU": 1,
+        "scaleV": 1
+      }
+    }
+  ],
+  "_meta": {
+    "version": "1.0",
+    "savedAt": "2026-06-30T14:07:13.563Z",
+    "nodeCount": 62
+  }
+}
