@@ -1,24 +1,10 @@
 /**
  * camera.js — Câmera orbital para o editor de cena 3D
- *
- * Conceitos dos tutoriais WebGL2Fundamentals aplicados:
- *
- *   mat4LookAt(eye, target, up)
- *     Recebe a posição da câmera calculada a partir de coordenadas
- *     esféricas (azimute, elevação, distância) e gera a view matrix.
- *
- *   mat4Perspective(fovY, aspect, near, far)
- *     Gera a projection matrix a partir do campo de visão e aspect ratio.
- *
- *   requestAnimationFrame / deltaTime
- *     A câmera em si não anima, mas os parâmetros azimute/elevação/
- *     distância são lidos a cada frame no loop de renderização.
- *
  * Controles:
- *   Botão esquerdo + arrastar     → orbitar (azimute + elevação)
- *   Shift + arrastar              → pan (mover ponto alvo)
- *   Botão direito + arrastar      → pan (alternativo)
- *   Scroll do mouse               → zoom (distância ao alvo)
+ *   Botão esquerdo + arrastar     → orbitar
+ *   Shift + arrastar              → pan
+ *   Botão direito + arrastar      → pan
+ *   Scroll do mouse               → zoom
  *
  * Separação com o sistema de picking:
  *   O picking (main.js) usa o evento 'click', que o browser só dispara
@@ -38,14 +24,6 @@ export class Camera {
    */
   constructor(canvas) {
     this.canvas = canvas;
-
-    // ── Coordenadas esféricas ─────────────────────────────────────
-    // A câmera orbita ao redor de 'target' numa esfera imaginária.
-    //
-    //   azimuth  = ângulo horizontal ao redor do eixo Y (graus)
-    //   elevation= ângulo vertical acima do plano XZ (graus)
-    //   distance = raio da esfera = distância ao target
-    //
     // A posição cartesiana do olho é calculada em getEye().
     this.azimuth   = 45;    // começa a 45° para visão isométrica
     this.elevation = 30;    // 30° acima do chão
@@ -72,9 +50,7 @@ export class Camera {
     this._setupEvents();
   }
 
-  // ────────────────────────────────────────────────────────────────
   // MATRIZES — chamadas a cada frame pelo renderer em main.js
-  // ────────────────────────────────────────────────────────────────
 
   /**
    * Converte coordenadas esféricas (azimute, elevação, distância)
@@ -126,10 +102,7 @@ export class Camera {
     return mat4Perspective(this.fovY, aspect, this.near, this.far);
   }
 
-  // ────────────────────────────────────────────────────────────────
   // OPERAÇÕES — chamadas pelos event listeners
-  // ────────────────────────────────────────────────────────────────
-
   /**
    * Orbita a câmera ao redor do target.
    *
@@ -207,10 +180,7 @@ export class Camera {
     this.distance = Math.max(0.5, Math.min(500, this.distance * factor));
   }
 
-  // ────────────────────────────────────────────────────────────────
   // EVENTOS DE MOUSE
-  // ────────────────────────────────────────────────────────────────
-
   /**
    * Registra todos os event listeners necessários.
    *

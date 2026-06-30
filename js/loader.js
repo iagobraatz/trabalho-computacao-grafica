@@ -208,10 +208,7 @@ function parseOBJ(text) {
 // Iago Kainan Bubolz Braatz
 
 
-
-// ─────────────────────────────────────────────────────────────
 // BOUNDING BOX
-// ─────────────────────────────────────────────────────────────
 
 /**
  * Calcula a bounding box do modelo a partir dos vértices expandidos.
@@ -252,9 +249,7 @@ function computeBBox(positions) {
 }
 
 
-// ─────────────────────────────────────────────────────────────
 // CRIAÇÃO DE BUFFERS NA GPU
-// ─────────────────────────────────────────────────────────────
 
 /**
  * Envia a geometria parseada para a GPU.
@@ -308,9 +303,7 @@ function createGPUModel(gl, parsed) {
 }
 
 
-// ─────────────────────────────────────────────────────────────
 // CLASSE ModelLoader
-// ─────────────────────────────────────────────────────────────
 
 export class ModelLoader {
   /**

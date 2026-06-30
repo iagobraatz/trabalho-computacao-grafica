@@ -204,11 +204,7 @@ export class Editor {
     e.animAxis.addEventListener('change', () => this._onAnimationInput());
     e.animSpeed.addEventListener('input',  () => this._onAnimationInput());
   }
-
-  // ───────────────────────────────────────────────────────────────────────────
   // PAINEL DIREITO — Grid de miniaturas dos modelos
-  // ───────────────────────────────────────────────────────────────────────────
-
   /**
    * Constrói o grid de modelos disponíveis no painel direito.
    * Chamado UMA VEZ em main.js após todos os modelos e thumbnails
@@ -358,11 +354,7 @@ export class Editor {
 
     return result;
   }
-
-  // ───────────────────────────────────────────────────────────────────────────
   // SELEÇÃO
-  // ───────────────────────────────────────────────────────────────────────────
-
   /**
    * Seleciona um nó pelo ID e sincroniza toda a UI.
    *
@@ -377,8 +369,6 @@ export class Editor {
   selectNode(id) {
     this._selectedId = id;
 
-    // Atualiza o visual da lista SEM reconstruir o DOM todo
-    // (muito mais eficiente do que chamar refreshSceneList)
     this._updateListHighlight();
 
     const node = id !== null ? this.scene.getNode(id) : null;
@@ -425,11 +415,7 @@ export class Editor {
       item.classList.toggle('selected', itemId === this._selectedId);
     }
   }
-
-  // ───────────────────────────────────────────────────────────────────────────
   // PREENCHER E LER INPUTS
-  // ───────────────────────────────────────────────────────────────────────────
-
   /**
    * Preenche todos os inputs com os valores do nó selecionado.
    * Chamado sempre que a seleção muda.
@@ -517,10 +503,7 @@ export class Editor {
     t.sz = Math.max(0.001, read(e.sz, t.sz));
   }
 
-  // ───────────────────────────────────────────────────────────────────────────
   // HIERARQUIA
-  // ───────────────────────────────────────────────────────────────────────────
-
   /**
    * Reconstrói o dropdown de seleção de pai para o nó selecionado.
    *
@@ -558,10 +541,6 @@ export class Editor {
     }
   }
 
-  /**
-   * Chamado quando o usuário muda o dropdown de pai.
-   * Aplica a nova relação pai/filho na cena e atualiza a lista.
-   */
   _onParentChange() {
     if (this._selectedId === null) return;
     const node = this.scene.getNode(this._selectedId);
@@ -582,10 +561,7 @@ export class Editor {
     this.refreshSceneList();
   }
 
-  // ───────────────────────────────────────────────────────────────────────────
   // ANIMAÇÃO
-  // ───────────────────────────────────────────────────────────────────────────
-
   /**
    * Lê os inputs de animação e aplica ao nó selecionado.
    *
@@ -648,10 +624,7 @@ export class Editor {
     tex.scaleV  = Math.max(0.001, read(e.texScaleV, tex.scaleV));
   }
 
-  // ───────────────────────────────────────────────────────────────────────────
   // ESTADO DO PAINEL DE EDIÇÃO
-  // ───────────────────────────────────────────────────────────────────────────
-
   /**
    * Habilita ou desabilita o painel de edição de propriedades.
    *
@@ -677,11 +650,7 @@ export class Editor {
       el.disabled = !enabled;
     });
   }
-
-  // ───────────────────────────────────────────────────────────────────────────
   // LOADING OVERLAY
-  // ───────────────────────────────────────────────────────────────────────────
-
   /**
    * Atualiza o overlay de progresso durante o carregamento dos modelos.
    * Chamado por main.js via callback no ModelLoader.loadAll().
@@ -717,9 +686,7 @@ export class Editor {
 // Iago Kainan Bubolz Braatz
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // UTILITÁRIO DE SEGURANÇA HTML
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Escapa caracteres HTML especiais para evitar XSS ao inserir
