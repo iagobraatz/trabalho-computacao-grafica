@@ -25,9 +25,7 @@ import { mat4Create, mat4Multiply, mat4FromTRS } from './math.js';
 
 const DEG2RAD = Math.PI / 180;
 
-// ─────────────────────────────────────────────────────────────
 // CLASSE Node
-// ─────────────────────────────────────────────────────────────
 
 export class Node {
   /**
@@ -52,9 +50,9 @@ export class Node {
 
     // ── Animação ──────────────────────────────────────────────────
     this.animation = {
-      type:  'none',  // 'none' | 'rotate' | 'translate'
-      axis:  'y',     // 'x' | 'y' | 'z'
-      speed: 1.0      // rad/s (rotate) ou unidades/s (translate)
+      type:  'none',  
+      axis:  'y',    
+      speed: 1.0     
     };
 
     // ── Propriedades de textura ───────────────────────────────────────
@@ -204,17 +202,13 @@ export class Node {
 }
 
 
-// ─────────────────────────────────────────────────────────────
 // CLASSE Scene
-// ─────────────────────────────────────────────────────────────
 
 export class Scene {
   constructor() {
-    this._nodes  = [];    // lista plana de todos os nós
-    this._nextId = 1;     // IDs começam em 1 (0 = "nada" no picking)
+    this._nodes  = [];   
+    this._nextId = 1;    
   }
-
-  // ── CRUD de nós ────────────────────────────────────────────────
 
   /**
    * Adiciona um novo nó à cena.
@@ -276,9 +270,6 @@ export class Scene {
   getRootNodes() {
     return this._nodes.filter(n => n.parent === null);
   }
-
-  // ── Update a cada frame ────────────────────────────────────────
-
   /**
    * Atualiza animações e reconstrói todas as matrizes.
    * Chamado uma vez por frame no loop de renderização.
@@ -362,7 +353,6 @@ export class Scene {
       }
     }
 
-    // Calcula matrizes iniciais
     this.update(0);
   }
 }

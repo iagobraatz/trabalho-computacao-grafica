@@ -29,10 +29,7 @@ import { Camera }                                                     from './js
 import { Editor }                                                     from './js/editor.js';
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // SHADERS
-// ─────────────────────────────────────────────────────────────────────────────
-
 /**
  * Vertex shader principal.
  *
@@ -139,9 +136,7 @@ void main() {
 `;
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // BOILERPLATE — seguindo exatamente o tutorial "WebGL2 Boilerplate"
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Compila um único shader GLSL.
@@ -219,9 +214,7 @@ function createProgramInfo(gl, program, uniformNames) {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // CANVAS RESIZE
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Ajusta o drawing buffer do canvas para corresponder ao seu tamanho CSS.
@@ -248,9 +241,7 @@ function resizeCanvas(canvas) {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // TEXTURA
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Carrega uma imagem e a envia para a GPU como textura WebGL2.
@@ -297,10 +288,7 @@ function loadTexture(gl, url) {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // FRAMEBUFFER DE PICKING — baseado no tutorial "WebGL2 Picking"
-// ─────────────────────────────────────────────────────────────────────────────
-
 /**
  * Cria um framebuffer off-screen para o sistema de picking por cor.
  *
@@ -361,9 +349,7 @@ function destroyFBO(gl, fbo) {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // ENCODE / DECODE DE IDS — diretamente do tutorial de picking
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Codifica um ID inteiro (1-based) em vetor RGBA [0..1].
@@ -400,9 +386,7 @@ function decodeId(r, g, b, a) {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // RENDERIZAÇÃO DA CENA PRINCIPAL
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Renderiza todos os objetos da cena com o shader principal
@@ -472,9 +456,7 @@ function drawObjects(gl, progInfo, scene, loader, proj, view, selectedId, textur
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // RENDERIZAÇÃO DE PICKING
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Renderiza todos os objetos com o shader de picking (sem textura,
@@ -517,9 +499,7 @@ function drawPickObjects(gl, progInfo, scene, loader, proj, view) {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // THUMBNAILS — render off-screen de cada modelo para o painel direito
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Renderiza um único modelo em um FBO 96×96 e retorna um data URL PNG.
@@ -668,9 +648,7 @@ function generateAllThumbnails(gl, progInfo, texture, loader) {
 }
 
 
-// ─────────────────────────────────────────────────────────────────────────────
 // MAIN
-// ─────────────────────────────────────────────────────────────────────────────
 
 async function main() {
 
@@ -690,9 +668,9 @@ async function main() {
   }
 
   // Estado WebGL global — ativado uma vez, permanece para toda a sessão
-  gl.enable(gl.DEPTH_TEST);  // objetos frontais tapam os que estão atrás
-  gl.enable(gl.CULL_FACE);   // descarta faces traseiras (CW) → performance
-  gl.cullFace(gl.BACK);      // padrão WebGL: faces CCW = frontais
+  gl.enable(gl.DEPTH_TEST);  
+  gl.enable(gl.CULL_FACE);  
+  gl.cullFace(gl.BACK);     
 
   // ── 2. Compilar shaders ────────────────────────────────────────────────────
   const mainProgram = createProgram(gl, VS_SRC, FS_SRC);
