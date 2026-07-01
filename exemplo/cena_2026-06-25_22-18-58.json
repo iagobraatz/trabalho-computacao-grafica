@@ -1,5 +1,5 @@
 {
-  "nextId": 71,
+  "nextId": 72,
   "nodes": [
     {
       "id": 1,
@@ -1211,37 +1211,6 @@
       }
     },
     {
-      "id": 43,
-      "modelName": "dumpster",
-      "name": "dumpster #43",
-      "parentId": null,
-      "transform": {
-        "tx": 4.5,
-        "ty": 0,
-        "tz": 4.5,
-        "rx": 0,
-        "ry": 45,
-        "rz": 0,
-        "sx": 1,
-        "sy": 1,
-        "sz": 1
-      },
-      "animation": {
-        "type": "none",
-        "axis": "y",
-        "speed": 1
-      },
-      "texture": {
-        "tintR": 1,
-        "tintG": 1,
-        "tintB": 1,
-        "offsetU": 0,
-        "offsetV": 0,
-        "scaleU": 1,
-        "scaleV": 1
-      }
-    },
-    {
       "id": 44,
       "modelName": "firehydrant",
       "name": "firehydrant #44",
@@ -1342,9 +1311,9 @@
       "transform": {
         "tx": -2,
         "ty": 0.1,
-        "tz": -2,
+        "tz": 1,
         "rx": 0,
-        "ry": 90,
+        "ry": 180,
         "rz": 0,
         "sx": 1,
         "sy": 1,
@@ -1893,13 +1862,13 @@
       }
     },
     {
-      "id": 70,
-      "modelName": "trash_B",
-      "name": "trash_B #70",
+      "id": 71,
+      "modelName": "road_straight_crossing",
+      "name": "road_straight_crossing #71",
       "parentId": null,
       "transform": {
-        "tx": 7,
-        "ty": 1,
+        "tx": -2,
+        "ty": 0,
         "tz": 0,
         "rx": 0,
         "ry": 0,
@@ -1909,14 +1878,14 @@
         "sz": 1
       },
       "animation": {
-        "type": "rotate",
-        "axis": "x",
+        "type": "none",
+        "axis": "y",
         "speed": 1
       },
       "texture": {
-        "tintR": 0.6352941176470588,
-        "tintG": 0.10196078431372549,
-        "tintB": 0.10196078431372549,
+        "tintR": 1,
+        "tintG": 1,
+        "tintB": 1,
         "offsetU": 0,
         "offsetV": 0,
         "scaleU": 1,
@@ -1926,7 +1895,7 @@
   ],
   "_meta": {
     "version": "1.0",
-    "savedAt": "2026-06-30T14:07:13.563Z",
-    "nodeCount": 62
+    "savedAt": "2026-07-01T01:18:58.525Z",
+    "nodeCount": 61
   }
 }
