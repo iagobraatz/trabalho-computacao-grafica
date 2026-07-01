@@ -8,11 +8,6 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       OVERLAY DE CARREGAMENTO
-       Cobre a tela inteira durante o carregamento dos modelos OBJ.
-       Removido por editor.js via setLoadingProgress() quando termina.
-  ════════════════════════════════════════════════════════════════ -->
   <div id="loading-overlay">
     <div id="loading-content">
       <h2>Editor de Cena 3D</h2>
@@ -23,31 +18,18 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       LAYOUT PRINCIPAL — três colunas
-       Coluna esquerda  : painel de controle e edição
-       Coluna central   : canvas WebGL
-       Coluna direita   : seleção de modelos
-  ════════════════════════════════════════════════════════════════ -->
   <div id="app">
 
-    <!-- ─────────────────────────────────────────────────────────────
-         PAINEL ESQUERDO — Objetos na cena e editor de propriedades
-    ──────────────────────────────────────────────────────────────── -->
     <aside id="panel-left">
 
-      <!-- Cabeçalho do painel -->
       <div class="panel-header">
         <h3>Cena</h3>
-        <!-- Botões de Save/Load ficam no topo para acesso rápido -->
         <div class="header-buttons">
           <button id="btn-save"      title="Salvar cena como JSON">💾 Salvar</button>
           <button id="btn-load-json" title="Carregar cena de um JSON">📂 Carregar</button>
         </div>
       </div>
 
-      <!-- Input de arquivo oculto — acionado por btn-load-json -->
-      <!-- accept=".json" filtra o seletor de arquivo do browser -->
       <input
         type="file"
         id="file-input"
@@ -55,16 +37,12 @@
         style="display: none;"
       />
 
-      <!-- ── Lista de objetos na cena ───────────────────────────── -->
       <div class="section-label">Objetos na cena</div>
 
-      <!-- Preenchido dinamicamente por editor.refreshSceneList() -->
-      <!-- Suporta hierarquia: filhos são indentados via DFS (editor.js) -->
       <div id="scene-list">
         <div class="scene-empty">Cena vazia.<br/>Clique num modelo →</div>
       </div>
 
-      <!-- Botão deletar — desabilitado quando nenhum objeto selecionado -->
       <button
         id="btn-delete"
         class="btn-danger"
@@ -74,15 +52,11 @@
         🗑 Remover selecionado
       </button>
 
-      <!-- ── Editor de propriedades ─────────────────────────────── -->
-      <!-- transform-editor é a seção que editor.js habilita/desabilita -->
       <div id="transform-editor" class="disabled-section">
 
-        <!-- Nome do objeto selecionado -->
         <div class="section-label">Propriedades</div>
         <div id="selected-name" class="selected-name-display">—</div>
 
-        <!-- ── Translação ──────────────────────────────────────── -->
         <div class="prop-group">
           <div class="prop-group-label">Translação (X Y Z)</div>
           <div class="input-row">
@@ -101,7 +75,6 @@
           </div>
         </div>
 
-        <!-- ── Rotação ─────────────────────────────────────────── -->
         <div class="prop-group">
           <div class="prop-group-label">Rotação em graus (X Y Z)</div>
           <div class="input-row">
@@ -120,7 +93,6 @@
           </div>
         </div>
 
-        <!-- ── Escala ──────────────────────────────────────────── -->
         <div class="prop-group">
           <div class="prop-group-label">Escala (X Y Z)</div>
           <div class="input-row">
@@ -139,13 +111,8 @@
           </div>
         </div>
 
-        <!-- ── Hierarquia ──────────────────────────────────────── -->
         <div class="prop-group">
           <div class="prop-group-label">Pai na hierarquia</div>
-          <!--
-            Opções populadas dinamicamente por editor._refreshParentDropdown().
-            Exclui o próprio nó e seus descendentes (evita ciclos).
-          -->
           <select id="parent-select" class="full-width-select">
             <option value="">— Nenhum (Raiz) —</option>
           </select>
@@ -154,17 +121,11 @@
           </div>
         </div>
 
-        <!-- ── Animação ────────────────────────────────────────── -->
         <div class="prop-group">
           <div class="prop-group-label">Animação</div>
 
           <div class="anim-row">
             <label class="anim-label">Tipo</label>
-            <!--
-              'none'      : sem animação
-              'rotate'    : rotação contínua no eixo escolhido
-              'translate' : translação pingpong no eixo escolhido
-            -->
             <select id="anim-type" class="anim-select">
               <option value="none">Nenhuma</option>
               <option value="rotate">Rotação contínua</option>
@@ -197,11 +158,9 @@
           </div>
         </div>
 
-        <!-- ── Propriedades de textura ─────────────────────────── -->
         <div class="prop-group">
           <div class="prop-group-label">Textura</div>
 
-          <!-- Tint de cor: color picker nativo do browser -->
           <div class="anim-row">
             <label class="anim-label">Cor (tint)</label>
             <div class="tint-row">
@@ -215,7 +174,6 @@
             </div>
           </div>
 
-          <!-- Offset UV -->
           <div class="prop-group-label" style="margin-top: 8px;">
             Offset UV (U / V)
           </div>
@@ -230,7 +188,6 @@
             </label>
           </div>
 
-          <!-- Escala UV -->
           <div class="prop-group-label" style="margin-top: 8px;">
             Escala UV (U / V)
           </div>
@@ -249,9 +206,7 @@
         </div>
 
       </div>
-      <!-- fim #transform-editor -->
 
-      <!-- Dica de controles da câmera no rodapé do painel -->
       <div id="camera-hints">
         <div class="hint-title">Controles da câmera</div>
         <div class="hint-line">🖱 Arrastar esquerdo → Orbitar</div>
@@ -261,25 +216,13 @@
       </div>
 
     </aside>
-    <!-- fim #panel-left -->
 
-    <!-- ─────────────────────────────────────────────────────────────
-         ÁREA CENTRAL — Canvas WebGL
-         Ocupa todo o espaço restante entre os dois painéis.
-         O canvas é redimensionado a cada frame para corresponder
-         ao seu tamanho CSS (veja resizeCanvas em main.js).
-    ──────────────────────────────────────────────────────────────── -->
     <main id="canvas-area">
       <canvas id="gl-canvas">
         Seu navegador não suporta WebGL2.
       </canvas>
     </main>
 
-    <!-- ─────────────────────────────────────────────────────────────
-         PAINEL DIREITO — Seleção de modelos disponíveis
-         Preenchido por editor.buildModelPanel() após carregamento.
-         Clique num modelo → adiciona ao centro da cena.
-    ──────────────────────────────────────────────────────────────── -->
     <aside id="panel-right">
 
       <div class="panel-header">
@@ -288,24 +231,14 @@
 
       <div class="section-label">Clique para adicionar à cena</div>
 
-      <!-- Grid preenchido dinamicamente por editor.buildModelPanel() -->
-      <!-- Cada item: thumbnail 3D + label do modelo -->
       <div id="model-grid">
-        <!-- Placeholder enquanto os modelos carregam -->
         <div class="scene-empty">Carregando…</div>
       </div>
 
     </aside>
-    <!-- fim #panel-right -->
 
   </div>
-  <!-- fim #app -->
 
-  <!--
-    Script carregado como ES Module (type="module") para que os
-    import/export dos outros arquivos funcionem corretamente.
-    defer é implícito em módulos: só executa após o HTML estar pronto.
-  -->
   <script type="module" src="main.js"></script>
 
 </body>
